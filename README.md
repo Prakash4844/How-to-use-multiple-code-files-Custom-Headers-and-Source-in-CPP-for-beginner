@@ -95,35 +95,35 @@ Now edit the Main File(“MultiClass.cpp.cpp”) so that the initial file Visual
 Now we have these files in our solution
 
 **MultiClass.cpp**
+```
+#include <iostream>
 
-> #include <iostream>
-> 
-> int square(int num); //This will tell the compiler that this function is written somewhere in solution.
-> 
-> int main()
-> 
-> {
-> 
->     int num = 0;
-> 
->     std::cout << "The a number to find it's square: ";
-> 
->     std::cin >> num;
-> 
->     std::cout << "The square of the number" << num << " is " << square(num);
-> 
-> }
+int square(int num); //This will tell the compiler that this function is written somewhere in solution.
 
+int main()
+
+{
+
+    int num = 0;
+
+    std::cout << "The a number to find it's square: ";
+
+    std::cin >> num;
+
+    std::cout << "The square of the number" << num << " is " << square(num);
+
+}
+```
 **Square.cpp**
+```
+int square(int num)
 
-> int square(int num)
-> 
-> {
-> 
->     return (num \* num);
-> 
-> }
+{
 
+    return (num \* num);
+
+}
+```
 According to this method we will have to include as many forward declarations as many functions we want to use, that would be quite tedious. To fix this we will have to use **custom header** files that we are going to create next.
 
 Writing a header file is quite easy, header files have these parts in it:
@@ -164,29 +164,29 @@ We must use a header guard in the header files but, we are skipping it for now a
 to use this header file “Square.h” in MultiClass.cpp, we have to #include it (using quotes, instead of angle brackets). After including Square.h we need not forward declare the Square in Main File(Multiclass.cpp) you must remove forward declaration from main file
 
 **Forward Declaration in Square.h**
-
-> int square(int num); //This will tell the compiler that this function is written somewhere in solution.
-
+```
+int square(int num); //This will tell the compiler that this function is written somewhere in solution.
+```
 **Inclusion of Square.h in Main file(MultiClass.cpp)**
+```
+#include <iostream>
 
-> #include <iostream>
-> 
-> #include "Square.h"
-> 
-> int main()
-> 
-> {
-> 
->     int num = 0;
-> 
->     std::cout << "The a number to find it's square: ";
-> 
->     std::cin >> num;
-> 
->     std::cout << "The square of the number" << num << " is " << square(num);
-> 
-> }
+#include "Square.h"
 
+int main()
+
+{
+
+    int num = 0;
+
+    std::cout << "The a number to find it's square: ";
+
+    std::cin >> num;
+
+    std::cout << "The square of the number" << num << " is " << square(num);
+
+}
+```
 ![](media/Adding_SquareH.jpg)
 
 Include Header in main file
@@ -225,49 +225,49 @@ We learned about header files, but what about header guards. We will be cover th
 We already know that a variable or function identifier can only have one definition. Thus, a program with multiple definitions of a variable identifier will cause a compilation error. Suppose these programs
 
 Ex.1
+```
+int main()
 
-> int main()
-> 
-> {
-> 
->     int x; // definition for variable 
-> 
->     int x; // compile error: you can’t have duplicate definitions
-> 
->     return 0;
-> 
-> }
+{
 
+    int x; // definition for variable 
+
+    int x; // compile error: you can’t have duplicate definitions
+
+    return 0;
+
+}
+```
 Ex.2
+```
+#include <iostream>
 
-> #include <iostream>
-> 
-> int foo() // definition for function foo
-> 
-> {
-> 
->     return 5;
-> 
-> }
-> 
-> int foo() // compile error: : you can’t have duplicate definitions 
-> 
-> {
-> 
->     return 5;
-> 
-> }
-> 
-> int main()
-> 
-> {
-> 
->     std::cout << foo();
-> 
->     return 0;
-> 
-> }
+int foo() // definition for function foo
 
+{
+
+    return 5;
+
+}
+
+int foo() // compile error: : you can’t have duplicate definitions 
+
+{
+
+    return 5;
+
+}
+
+int main()
+
+{
+
+    std::cout << foo();
+
+    return 0;
+
+}
+```
 These programs are easy to fix (just remove the duplicate definition), but with header files, You might end up in a situation where a definition in a header file gets included more than once. This can happen when a header file #includes another header file (which is very common).
 
 To avoid Multiple Definitions of headers we can use Header Guards
@@ -277,9 +277,9 @@ To avoid Multiple Definitions of headers we can use Header Guards
 Most Modern compilers including Visual Studio Community support a simple, form of header guards using the “*#pragma”* directive it is provided By default in Every Header File that we create in Visual Studio Community:
 
 **Sqaure.h**
-
+```
 #pragma once
-
+```
 int square(int num); //This will tell the compiler that this function is written somewhere in solution.
 
 ![](media/Pregma.jpg)
@@ -306,17 +306,19 @@ Another useful pre-processor directive is **#ifndef HEADER\_H**. This directive
 
 Header guards are implemented by using three pre-processor directives in a header file. **#ifndef HEADER\_H** or **#ifdef HEADER\_H** and **#define HEADER\_H** is placed at the beginning of the file, before any code. The last **#endif** is placed at the end of the file.
 
-> #ifndef HEADER\_H 
-> 
-> //and is followed immediately by the line
-> 
-> #define HEADER\_H 
-> 
-> //The line
-> 
-> #endif /\* MY\_SYMBOL\_H \*/
-> 
-> //is placed at the end of the file.
+```
+#ifndef HEADER\_H 
+
+//and is followed immediately by the line
+
+#define HEADER\_H 
+
+//The line
+
+#endif /\* MY\_SYMBOL\_H \*/
+
+//is placed at the end of the file.
+```
 
 **Key Points**
 
