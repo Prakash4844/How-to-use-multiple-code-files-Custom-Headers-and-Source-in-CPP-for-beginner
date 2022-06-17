@@ -95,7 +95,7 @@ Now edit the Main File(“MultiClass.cpp.cpp”) so that the initial file Visual
 Now we have these files in our solution
 
 **MultiClass.cpp**
-```
+```cpp
 #include <iostream>
 
 int square(int num); //This will tell the compiler that this function is written somewhere in solution.
@@ -115,7 +115,7 @@ int main()
 }
 ```
 **Square.cpp**
-```
+```cpp
 int square(int num)
 
 {
@@ -164,11 +164,11 @@ We must use a header guard in the header files but, we are skipping it for now a
 to use this header file “Square.h” in MultiClass.cpp, we have to #include it (using quotes, instead of angle brackets). After including Square.h we need not forward declare the Square in Main File(Multiclass.cpp) you must remove forward declaration from main file
 
 **Forward Declaration in Square.h**
-```
+```cpp
 int square(int num); //This will tell the compiler that this function is written somewhere in solution.
 ```
 **Inclusion of Square.h in Main file(MultiClass.cpp)**
-```
+```cpp
 #include <iostream>
 
 #include "Square.h"
@@ -225,7 +225,7 @@ We learned about header files, but what about header guards. We will be cover th
 We already know that a variable or function identifier can only have one definition. Thus, a program with multiple definitions of a variable identifier will cause a compilation error. Suppose these programs
 
 Ex.1
-```
+```cpp
 int main()
 
 {
@@ -239,7 +239,7 @@ int main()
 }
 ```
 Ex.2
-```
+```cpp
 #include <iostream>
 
 int foo() // definition for function foo
@@ -306,7 +306,7 @@ Another useful pre-processor directive is **#ifndef HEADER\_H**. This directive
 
 Header guards are implemented by using three pre-processor directives in a header file. **#ifndef HEADER\_H** or **#ifdef HEADER\_H** and **#define HEADER\_H** is placed at the beginning of the file, before any code. The last **#endif** is placed at the end of the file.
 
-```
+```cpp
 #ifndef HEADER\_H 
 
 //and is followed immediately by the line
