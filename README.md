@@ -307,15 +307,15 @@ Another useful pre-processor directive is **#ifndef HEADER\_H**. This directive
 Header guards are implemented by using three pre-processor directives in a header file. **#ifndef HEADER\_H** or **#ifdef HEADER\_H** and **#define HEADER\_H** is placed at the beginning of the file, before any code. The last **#endif** is placed at the end of the file.
 
 ```cpp
-#ifndef HEADER\_H 
+#ifndef HEADER_H 
 
 //and is followed immediately by the line
 
-#define HEADER\_H 
+#define HEADER_H 
 
 //The line
 
-#endif /\* MY\_SYMBOL\_H \*/
+#endif MY_SYMBOL_H
 
 //is placed at the end of the file.
 ```
